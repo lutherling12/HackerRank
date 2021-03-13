@@ -1,13 +1,25 @@
 #include <bits/stdc++.h>
+#include <unordered_map>
 
 using namespace std;
 
 vector<string> split_string(string);
 
 // Complete the sockMerchant function below.
-int sockMerchant(int n, vector<int> ar) {
+int sockMerchant(int n, vector<int> ar)
+{
+    unordered_map<int, int> socks (n);
 
+    for(auto sock : ar) {
+        ++socks[sock];
+    }
 
+    int pairs = 0;
+    for(auto color : socks) {
+        pairs += color.second/2;
+    }
+
+    return pairs;
 }
 
 int main()
