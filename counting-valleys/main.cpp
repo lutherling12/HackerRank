@@ -14,8 +14,28 @@ string rtrim(const string &);
  *  2. STRING path
  */
 
-int countingValleys(int steps, string path) {
+int countingValleys(int steps, string path)
+{
+    const char UPHILL = 'U';
+    const char DOWNHILL = 'D';
 
+    const int SEA_LEVEL = 0;
+
+    int valleys = 0;
+    int altitude = SEA_LEVEL;
+
+    for(auto step : path) {
+        if(UPHILL == step) {
+            if(SEA_LEVEL == ++altitude) {
+                ++valleys;
+            }
+        }
+        else if(DOWNHILL == step) {
+            --altitude;
+        }
+    }
+
+    return valleys;
 }
 
 int main()
